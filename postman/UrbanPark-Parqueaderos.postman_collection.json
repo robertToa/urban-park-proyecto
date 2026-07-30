@@ -1,0 +1,630 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-4789-a012-3456789abcde",
+    "name": "Urban Park - Parqueaderos",
+    "description": "APIs del estacionamiento Urban Park. Primero ejecuta Obtener token (Keycloak).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost"
+    },
+    {
+      "key": "keycloakUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "realm",
+      "value": "urbanpark"
+    },
+    {
+      "key": "clientId",
+      "value": "urbanpark-web"
+    },
+    {
+      "key": "username",
+      "value": "cliente1"
+    },
+    {
+      "key": "password",
+      "value": "cliente123"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "espacioId",
+      "value": "1"
+    },
+    {
+      "key": "ticketId",
+      "value": "1"
+    },
+    {
+      "key": "vehiculoId",
+      "value": "1"
+    },
+    {
+      "key": "userId",
+      "value": ""
+    },
+    {
+      "key": "placa",
+      "value": "ABC123"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Autenticacion",
+      "item": [
+        {
+          "name": "Obtener token Keycloak",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "url": "{{keycloakUrl}}/realms/{{realm}}/protocol/openid-connect/token",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "password"
+                },
+                {
+                  "key": "client_id",
+                  "value": "{{clientId}}"
+                },
+                {
+                  "key": "username",
+                  "value": "{{username}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}"
+                }
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var data = pm.response.json();",
+                  "if (data.access_token) {",
+                  "  pm.collectionVariables.set('accessToken', data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Registrar usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"nuevo.cliente\",\n  \"email\": \"nuevo@urbanpark.local\",\n  \"firstName\": \"Nuevo\",\n  \"lastName\": \"Cliente\",\n  \"password\": \"cliente123\",\n  \"role\": \"CLIENTE\"\n}"
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Espacios",
+      "item": [
+        {
+          "name": "Listar espacios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/espacios"
+          }
+        },
+        {
+          "name": "Espacios disponibles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/espacios/disponibles?tipo=AUTO&zona=A"
+          }
+        },
+        {
+          "name": "Ocupacion",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/espacios/ocupacion"
+          }
+        },
+        {
+          "name": "Obtener espacio",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/espacios/{{espacioId}}"
+          }
+        },
+        {
+          "name": "Crear espacio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/espacios",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"A-99\",\n  \"zona\": \"A\",\n  \"tipoVehiculo\": \"AUTO\",\n  \"ocupado\": false,\n  \"tarifaHora\": 3.5,\n  \"nivel\": 1,\n  \"descripcion\": \"Plaza nueva\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar espacio",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/espacios/{{espacioId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"A-01\",\n  \"zona\": \"A\",\n  \"tipoVehiculo\": \"AUTO\",\n  \"ocupado\": false,\n  \"tarifaHora\": 4,\n  \"nivel\": 1,\n  \"descripcion\": \"Actualizada\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Ocupar plaza",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/espacios/{{espacioId}}/ocupar"
+          }
+        },
+        {
+          "name": "Liberar plaza",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/espacios/{{espacioId}}/liberar"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Vehiculos",
+      "item": [
+        {
+          "name": "Listar vehiculos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/vehiculos"
+          }
+        },
+        {
+          "name": "Obtener vehiculo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/vehiculos/{{vehiculoId}}"
+          }
+        },
+        {
+          "name": "Buscar por placa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/vehiculos/placa/{{placa}}"
+          }
+        },
+        {
+          "name": "Registrar vehiculo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/vehiculos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"{{placa}}\",\n  \"tipo\": \"AUTO\",\n  \"marca\": \"Toyota\",\n  \"color\": \"Rojo\",\n  \"propietario\": \"Cliente Demo\",\n  \"propietarioEmail\": \"cliente1@urbanpark.local\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar vehiculo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/vehiculos/{{vehiculoId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"{{placa}}\",\n  \"tipo\": \"AUTO\",\n  \"marca\": \"Toyota\",\n  \"color\": \"Azul\",\n  \"propietario\": \"Cliente Demo\",\n  \"propietarioEmail\": \"cliente1@urbanpark.local\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar vehiculo",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/api/vehiculos/{{vehiculoId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Tickets",
+      "item": [
+        {
+          "name": "Listar tickets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets"
+          }
+        },
+        {
+          "name": "Tickets abiertos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/abiertos"
+          }
+        },
+        {
+          "name": "Obtener ticket",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/{{ticketId}}"
+          }
+        },
+        {
+          "name": "Abrir ticket",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tickets/abrir",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"{{placa}}\",\n  \"espacioId\": {{espacioId}}\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var data = pm.response.json();",
+                  "if (data.id) pm.collectionVariables.set('ticketId', String(data.id));",
+                  "if (data.espacioId) pm.collectionVariables.set('espacioId', String(data.espacioId));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Cerrar ticket",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/{{ticketId}}/cerrar"
+          }
+        },
+        {
+          "name": "Sincronizar liberaciones",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/sincronizar-liberaciones"
+          }
+        },
+        {
+          "name": "Reconciliar plazas ADMIN",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/reconciliar-plazas"
+          }
+        },
+        {
+          "name": "Ocupacion via tickets ADMIN",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/ocupacion"
+          }
+        },
+        {
+          "name": "Demo status espacios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/demo/espacios/status"
+          }
+        },
+        {
+          "name": "Demo stop espacios",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/demo/espacios/stop"
+          }
+        },
+        {
+          "name": "Demo start espacios",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/tickets/demo/espacios/start"
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. IA",
+      "item": [
+        {
+          "name": "Salud ms-ia",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/ia/salud",
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "Estado Ollama",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/ia/ollama"
+          }
+        },
+        {
+          "name": "Recomendar plaza",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/ia/recomendar",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipoVehiculo\": \"AUTO\",\n  \"preferencia\": \"cerca de la entrada\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Asignar plaza",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/ia/asignar",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"{{placa}}\",\n  \"tipoVehiculo\": \"AUTO\",\n  \"preferencia\": \"cerca de la entrada\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Reporte parqueadero ADMIN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/ia/reporte-tickets",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaDesde\": \"2026-01-01\",\n  \"fechaHasta\": \"2026-12-31\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Perfil",
+      "item": [
+        {
+          "name": "Mi perfil",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/perfil/me"
+          }
+        },
+        {
+          "name": "Actualizar perfil",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/perfil/me",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"cliente1@urbanpark.local\",\n  \"firstName\": \"Cliente\",\n  \"lastName\": \"Uno\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Cambiar contrasena",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/perfil/me/password",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"cliente123\",\n  \"newPassword\": \"cliente123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Admin usuarios",
+      "item": [
+        {
+          "name": "Listar usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/admin/users"
+          }
+        },
+        {
+          "name": "Obtener usuario",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/admin/users/{{userId}}"
+          }
+        },
+        {
+          "name": "Crear usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/admin/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"operador2\",\n  \"email\": \"operador2@urbanpark.local\",\n  \"firstName\": \"Operador\",\n  \"lastName\": \"Dos\",\n  \"password\": \"operador123\",\n  \"role\": \"OPERADOR\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar usuario",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/admin/users/{{userId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"operador2@urbanpark.local\",\n  \"firstName\": \"Operador\",\n  \"lastName\": \"Dos\",\n  \"enabled\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Cambiar rol",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/admin/users/{{userId}}/roles",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"OPERADOR\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Reset password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/admin/users/{{userId}}/password",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"operador123\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

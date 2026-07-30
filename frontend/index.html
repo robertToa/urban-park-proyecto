@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Urban Park</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=50" />
+</head>
+<body>
+  <div class="asphalt" aria-hidden="true">
+    <div class="road-scene">
+      <div class="road-lane"></div>
+      <div class="road-park">
+        <div class="park-pad">
+          <div class="park-stall">
+            <span class="stall-mark">A-01</span>
+            <div class="stall-lines"></div>
+            <div class="wheel-stop"></div>
+            <div class="road-car">
+              <div class="car-side">
+                <svg viewBox="0 0 120 44" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="bodyY" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#ffe566"/>
+                      <stop offset="45%" stop-color="#f2c51a"/>
+                      <stop offset="100%" stop-color="#b8890a"/>
+                    </linearGradient>
+                    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#9ed7ff"/>
+                      <stop offset="100%" stop-color="#1a2a38"/>
+                    </linearGradient>
+                    <radialGradient id="shade" cx="50%" cy="80%" r="60%">
+                      <stop offset="0%" stop-color="#000" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <ellipse cx="58" cy="40" rx="38" ry="3.5" fill="url(#shade)"/>
+                  <path fill="url(#bodyY)" d="M6 26c2-5 6-9 12-11l8-7c2.5-2 6-3 9.5-3h22c5 0 9 2 12 5.5L82 24c5 1 14 2 20 3.5 2 .5 3 2 3 4v3.5c0 1.5-1.2 2.5-2.8 2.5H95c-1.2 3.8-4.8 6.5-9 6.5s-7.8-2.7-9-6.5H42c-1.2 3.8-4.8 6.5-9 6.5s-7.8-2.7-9-6.5H9C7.2 37.5 6 36.5 6 35V26z"/>
+                  <path fill="#fff" opacity="0.18" d="M22 24c3-4 8-7 14-8l5-5h18c3 0 5.5 1.2 7.5 3.2L72 24H24z"/>
+                  <path fill="#12171c" d="M46 9h22c3.5 0 6.2 1.6 7.5 4.2L80 23H43l2.2-9.5C46 10.5 47.5 9 49 9z"/>
+                  <path fill="url(#glass)" d="M49 11h17c2.2 0 4 1 5 2.6L74 22H46.5l1.5-8C48.5 12 49.5 11 51 11z" opacity="0.9"/>
+                  <path fill="#0c0f12" d="M96 22h12l2 2.5H96z"/>
+                  <path fill="#1a2027" d="M105 19h4v7h-4z"/>
+                  <ellipse cx="14" cy="24.5" rx="3" ry="1.8" fill="#fff8d0"/>
+                  <ellipse cx="14" cy="24.5" rx="1.4" ry="0.8" fill="#fff" opacity="0.85"/>
+                  <path fill="#0c0f12" opacity="0.35" d="M28 27h14l-2 2H26z"/>
+                  <circle cx="33" cy="34.5" r="6.2" fill="#0c0f12"/>
+                  <circle cx="33" cy="34.5" r="3.2" fill="#4a525a"/>
+                  <circle cx="33" cy="34.5" r="1.2" fill="#f2c51a"/>
+                  <circle cx="86" cy="34.5" r="6.2" fill="#0c0f12"/>
+                  <circle cx="86" cy="34.5" r="3.2" fill="#4a525a"/>
+                  <circle cx="86" cy="34.5" r="1.2" fill="#f2c51a"/>
+                </svg>
+              </div>
+              <div class="car-front">
+                <svg viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="bodyYF" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#ffe566"/>
+                      <stop offset="40%" stop-color="#f2c51a"/>
+                      <stop offset="100%" stop-color="#9a7208"/>
+                    </linearGradient>
+                    <linearGradient id="glassF" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#d4f0ff"/>
+                      <stop offset="55%" stop-color="#4a90b8"/>
+                      <stop offset="100%" stop-color="#0f2430"/>
+                    </linearGradient>
+                    <radialGradient id="shadeF" cx="50%" cy="92%" r="50%">
+                      <stop offset="0%" stop-color="#000" stop-opacity="0.5"/>
+                      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <ellipse cx="45" cy="64" rx="32" ry="4" fill="url(#shadeF)"/>
+                  <!-- ruedas (vista frontal) -->
+                  <ellipse cx="18" cy="54" rx="7" ry="5" fill="#0c0f12"/>
+                  <ellipse cx="18" cy="54" rx="3.5" ry="2.4" fill="#5a626a"/>
+                  <ellipse cx="72" cy="54" rx="7" ry="5" fill="#0c0f12"/>
+                  <ellipse cx="72" cy="54" rx="3.5" ry="2.4" fill="#5a626a"/>
+                  <!-- carrocería frontal -->
+                  <path fill="url(#bodyYF)" d="M12 40c1-8 6-14 13-18l5-9c1.5-2.5 4.5-4 8-4h14c3.5 0 6.5 1.5 8 4l5 9c7 4 12 10 13 18v10c0 2.5-2 4.5-4.5 4.5H16.5C14 54.5 12 52.5 12 50V40z"/>
+                  <!-- capó -->
+                  <path fill="#fff" opacity="0.2" d="M24 28c3-6 8-9 16-9h10c8 0 13 3 16 9l1 7H23z"/>
+                  <!-- techo -->
+                  <path fill="#10161c" d="M30 11h30c3 0 5 1.5 6 4l3 8H21l3-8c1-2.5 3-4 6-4z"/>
+                  <!-- parabrisas mirando a cámara -->
+                  <path fill="url(#glassF)" d="M26 20h38l-3.5 12H29.5z"/>
+                  <path fill="#fff" opacity="0.25" d="M30 22h14l-1 4H29z"/>
+                  <!-- parrilla -->
+                  <rect x="30" y="40" width="30" height="7" rx="1.2" fill="#0c0f12"/>
+                  <path stroke="#6a727a" stroke-width="0.8" d="M33 42h24M33 44h24M33 46h24"/>
+                  <!-- faros hacia la pantalla -->
+                  <ellipse cx="20" cy="38" rx="6.5" ry="4" fill="#fff8d0"/>
+                  <ellipse cx="20" cy="38" rx="3.2" ry="2" fill="#fff"/>
+                  <ellipse cx="20" cy="38" rx="1.4" ry="0.9" fill="#ffe08a"/>
+                  <ellipse cx="70" cy="38" rx="6.5" ry="4" fill="#fff8d0"/>
+                  <ellipse cx="70" cy="38" rx="3.2" ry="2" fill="#fff"/>
+                  <ellipse cx="70" cy="38" rx="1.4" ry="0.9" fill="#ffe08a"/>
+                  <!-- placa -->
+                  <rect x="34" y="48.5" width="22" height="5.5" rx="0.8" fill="#f5f7f2" stroke="#c9a012" stroke-width="0.6"/>
+                  <text x="45" y="52.6" text-anchor="middle" font-size="3.4" font-family="Bebas Neue,sans-serif" fill="#0c0f12" letter-spacing="0.5">UP-01</text>
+                  <!-- insignia -->
+                  <circle cx="45" cy="36" r="2.6" fill="#0c0f12"/>
+                  <circle cx="45" cy="36" r="1.3" fill="#f2c51a"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="park-glow"></div>
+        </div>
+        <div class="park-signal">
+          <div class="signal-pole"></div>
+          <div class="signal-head">
+            <div class="signal-badge">P</div>
+            <div class="signal-status">
+              <span class="dot warn"></span>
+              <span class="dot ok"></span>
+            </div>
+            <div class="signal-readout">
+              <span class="read-idle">ACCESO</span>
+              <span class="read-ok">SEGURO</span>
+            </div>
+          </div>
+          <div class="signal-base"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <div id="modal-confirm" class="modal" hidden>
+    <div class="modal-card">
+      <h3 id="modal-title">Confirmar</h3>
+      <p id="modal-msg"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn ghost dark" id="modal-cancel">Cancelar</button>
+        <button type="button" class="btn ok" id="modal-ok">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-user" class="modal" hidden>
+    <div class="modal-card modal-card-form">
+      <h3 id="modal-user-title">Editar usuario</h3>
+      <form id="form-user-edit" class="stack">
+        <input type="hidden" name="id" id="edit-user-id" />
+        <label>Nombre
+          <input name="firstName" id="edit-firstName" required />
+        </label>
+        <label>Apellido
+          <input name="lastName" id="edit-lastName" required />
+        </label>
+        <label>Email
+          <input name="email" id="edit-email" type="email" required />
+        </label>
+        <label>Perfil
+          <select name="role" id="edit-role">
+            <option value="CLIENTE">CLIENTE</option>
+            <option value="OPERADOR">OPERADOR</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" name="enabled" id="edit-enabled" />
+          Activo
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn ghost dark" id="modal-user-cancel">Cancelar</button>
+          <button type="submit" class="btn primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-password" class="modal" hidden>
+    <div class="modal-card modal-card-form">
+      <h3>Reset contraseña</h3>
+      <form id="form-user-password" class="stack">
+        <input type="hidden" name="id" id="pwd-user-id" />
+        <p id="pwd-user-label" class="hint" style="margin:0"></p>
+        <label>Nueva contraseña
+          <input name="password" id="pwd-new" type="password" minlength="6" required autocomplete="new-password" />
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn ghost dark" id="modal-password-cancel">Cancelar</button>
+          <button type="submit" class="btn primary">Actualizar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <section id="view-login" class="view login-view">
+    <div class="login-panel">
+      <p class="brand-mark">URBAN PARK</p>
+      <h1>Estacionamiento inteligente</h1>
+      <form id="login-form" class="stack">
+        <label>Usuario
+          <input id="username" type="text" value="cliente1" autocomplete="username" required />
+        </label>
+        <label>Contraseña
+          <input id="password" type="password" value="cliente123" autocomplete="current-password" required />
+        </label>
+        <button type="submit" class="btn primary">Iniciar sesión</button>
+        <button type="button" class="btn secondary" id="btn-perfiles">Ver perfiles y permisos</button>
+        <button type="button" class="btn ghost dark" id="btn-mostrar-registro">Crear cuenta</button>
+        <p id="login-error" class="error" hidden></p>
+      </form>
+
+      <form id="register-form" class="stack register-form" hidden>
+        <label>Usuario
+          <input name="username" minlength="4" required autocomplete="username" />
+        </label>
+        <label>Email
+          <input name="email" type="email" required autocomplete="email" />
+        </label>
+        <label>Nombre
+          <input name="firstName" required />
+        </label>
+        <label>Apellido
+          <input name="lastName" required />
+        </label>
+        <label>Contraseña
+          <input name="password" type="password" minlength="6" required autocomplete="new-password" />
+        </label>
+        <label>Perfil
+          <select name="role" required>
+            <option value="CLIENTE">CLIENTE</option>
+            <option value="OPERADOR">OPERADOR</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+        </label>
+        <button type="submit" class="btn primary">Registrarme</button>
+        <button type="button" class="btn ghost dark" id="btn-cancelar-registro">Volver al login</button>
+        <p id="register-error" class="error" hidden></p>
+        <p id="register-ok" class="hint" hidden></p>
+      </form>
+
+      <div id="panel-perfiles" class="perfiles-panel" hidden>
+        <table class="perfiles-table">
+          <thead>
+            <tr>
+              <th>Perfil</th>
+              <th>Usuario demo</th>
+              <th>Qué puede hacer</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CLIENTE</strong></td>
+              <td><code>cliente1 / cliente123</code></td>
+              <td>Solo: Plazas · Mis vehículos · Mis tickets · IA · JWT (sin ver datos de otros)</td>
+              <td><button type="button" class="btn primary btn-usar" data-user="cliente1" data-pass="cliente123">Usar</button></td>
+            </tr>
+            <tr>
+              <td><strong>CLIENTE</strong></td>
+              <td><code>cliente2 / cliente123</code></td>
+              <td>Solo: Plazas · Mis vehículos · Mis tickets · IA · JWT (sin ver datos de otros)</td>
+              <td><button type="button" class="btn primary btn-usar" data-user="cliente2" data-pass="cliente123">Usar</button></td>
+            </tr>
+            <tr>
+              <td><strong>CLIENTE</strong></td>
+              <td><code>cliente3 / cliente123</code></td>
+              <td>Solo: Plazas · Mis vehículos · Mis tickets · IA · JWT (sin ver datos de otros)</td>
+              <td><button type="button" class="btn primary btn-usar" data-user="cliente3" data-pass="cliente123">Usar</button></td>
+            </tr>
+            <tr>
+              <td><strong>OPERADOR</strong></td>
+              <td><code>operador1 / operador123</code></td>
+              <td>Solo: Plazas · Vehículos · Tickets · JWT · Liberar plazas. Sin IA, Reporte ni Resilience</td>
+              <td><button type="button" class="btn primary btn-usar" data-user="operador1" data-pass="operador123">Usar</button></td>
+            </tr>
+            <tr>
+              <td><strong>ADMIN</strong></td>
+              <td><code>admin1 / admin123</code></td>
+              <td>Todas las pantallas + <strong>Usuarios</strong> + <strong>Reporte IA</strong> + <strong>Resilience</strong></td>
+              <td><button type="button" class="btn primary btn-usar" data-user="admin1" data-pass="admin123">Usar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="hint">Abre siempre: <a href="http://localhost" target="_blank" rel="noopener"><strong>http://localhost</strong></a> (no el archivo HTML).</p>
+      <p class="hint">Registro: <strong>Crear cuenta</strong> (CLIENTE / OPERADOR / ADMIN) o pestaña Usuarios (ADMIN).</p>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="view-app" class="view app-view" hidden>
+    <header class="topbar">
+      <div class="brand-inline">
+        <span class="brand-mark sm">URBAN PARK</span>
+        <span id="session-user" class="session-pill"></span>
+      </div>
+      <nav class="tabs">
+        <button type="button" data-tab="plazas" class="tab active">Plazas</button>
+        <button type="button" data-tab="vehiculos" class="tab">Vehículos</button>
+        <button type="button" data-tab="tickets" class="tab">Tickets</button>
+        <button type="button" data-tab="ia" class="tab">IA</button>
+        <button type="button" data-tab="reporte" class="tab">Reporte IA</button>
+        <button type="button" data-tab="resilience" class="tab">Resilience</button>
+        <button type="button" data-tab="usuarios" class="tab">Usuarios</button>
+        <button type="button" data-tab="perfil" class="tab">Mi perfil</button>
+        <button type="button" data-tab="token" class="tab">Sesión JWT</button>
+      </nav>
+      <button type="button" id="btn-logout" class="btn ghost">Salir</button>
+    </header>
+
+    <main class="main">
+      <div id="tab-plazas" class="panel">
+        <div class="panel-head">
+          <h2>Plazas y ocupación</h2>
+          <button type="button" class="btn secondary" id="btn-refresh-plazas">Actualizar</button>
+        </div>
+        <div id="ocupacion-box" class="ocupacion"></div>
+        <div id="plaza-cliente-info" class="plaza-cliente-info" hidden></div>
+        <div id="plazas-grid" class="grid-plazas"></div>
+      </div>
+
+      <div id="tab-vehiculos" class="panel" hidden>
+        <div class="panel-head">
+          <h2 id="vehiculos-title">Vehículos</h2>
+        </div>
+        <p id="vehiculos-scope-hint" class="hint" style="margin-top:0" hidden></p>
+        <form id="form-vehiculo" class="form-inline">
+          <input name="placa" placeholder="Placa" required />
+          <select name="tipo">
+            <option>AUTO</option>
+            <option>MOTO</option>
+            <option>CAMIONETA</option>
+          </select>
+          <input name="marca" placeholder="Marca" />
+          <input name="color" placeholder="Color" />
+          <input name="propietario" placeholder="Propietario" required />
+          <button type="submit" class="btn primary">Registrar</button>
+        </form>
+        <div id="vehiculos-list" class="list"></div>
+      </div>
+
+      <div id="tab-tickets" class="panel" hidden>
+        <div class="panel-head">
+          <h2 id="tickets-title">Tickets entrada / salida</h2>
+          <button type="button" class="btn secondary" id="btn-sync-liberaciones">Sincronizar plazas</button>
+        </div>
+        <p id="tickets-scope-hint" class="hint" style="margin-top:0" hidden></p>
+        <p id="tickets-sync-hint" class="hint" style="margin-top:0" hidden></p>
+        <div id="tickets-resumen" class="tickets-resumen" hidden></div>
+        <form id="form-ticket" class="form-inline">
+          <input name="placa" id="input-placa-ticket" list="lista-placas" placeholder="Placa" required autocomplete="off" />
+          <datalist id="lista-placas"></datalist>
+          <select name="plaza" id="select-plaza" required>
+            <option value="">Elige plaza libre…</option>
+          </select>
+          <button type="submit" class="btn primary">Abrir ticket</button>
+        </form>
+        <p class="hint" style="margin-top:0">También puedes elegir la plaza desde la pestaña <strong>Plazas</strong> → «Usar».</p>
+        <div class="filtros" id="filtros-tickets">
+          <button type="button" class="chip active" data-filtro="TODOS">Todos</button>
+          <button type="button" class="chip" data-filtro="ABIERTO">Abiertos</button>
+          <button type="button" class="chip" data-filtro="CERRADO">Cerrados</button>
+        </div>
+        <div id="tickets-list" class="list"></div>
+      </div>
+
+      <div id="tab-ia" class="panel" hidden>
+        <div class="panel-head">
+          <h2>Asignación con Ollama</h2>
+          <button type="button" class="btn secondary" id="btn-ollama-status">Estado Ollama</button>
+        </div>
+        <p id="ollama-status" class="hint" style="margin-top:0"></p>
+        <form id="form-ia" class="form-inline">
+          <input name="placa" placeholder="Placa (ej. ABC-123)" required />
+          <select name="tipoVehiculo">
+            <option>AUTO</option>
+            <option>MOTO</option>
+            <option>CAMIONETA</option>
+            <option>DISCAPACIDAD</option>
+          </select>
+          <input name="preferencia" placeholder="Preferencia (cerca, barato…)" />
+          <button type="button" class="btn secondary" id="btn-recomendar">Solo recomendar</button>
+          <button type="submit" class="btn primary">Asignar con Ollama</button>
+        </form>
+        <div id="ia-result" class="ia-card" hidden></div>
+      </div>
+
+      <div id="tab-reporte" class="panel" hidden>
+        <div class="panel-head">
+          <h2>Reporte IA</h2>
+          <button type="button" class="btn primary" id="btn-reporte-ia">Generar reporte</button>
+        </div>
+        <p class="hint" style="margin-top:0">Elige el rango de fechas (por fecha de ingreso del ticket). Ollama analiza recaudación, ocupación y recomienda acciones.</p>
+        <form id="form-reporte" class="form-inline reporte-fechas">
+          <label>Desde
+            <input type="date" id="reporte-desde" name="fechaDesde" required />
+          </label>
+          <label>Hasta
+            <input type="date" id="reporte-hasta" name="fechaHasta" required />
+          </label>
+          <button type="button" class="btn secondary" id="btn-reporte-hoy">Hoy</button>
+          <button type="button" class="btn secondary" id="btn-reporte-7d">Últimos 7 días</button>
+        </form>
+        <div id="reporte-ia-box" class="ia-card reporte-card">
+          <p>Selecciona fechas y pulsa <strong>Generar reporte</strong>.</p>
+        </div>
+      </div>
+
+      <div id="tab-resilience" class="panel" hidden>
+        <div class="panel-head">
+          <h2>Resilience4j</h2>
+          <span class="session-pill">Solo ADMIN</span>
+        </div>
+        <p class="hint" style="margin-top:0">
+          Demo de <strong>Circuit Breaker + Retry</strong>: <code>ms-tickets</code> consulta ocupación en
+          <code>ms-espacios</code> vía Feign. Si el servicio falla, Resilience4j reintenta y activa fallback.
+        </p>
+        <div class="resilience-actions form-inline">
+          <button type="button" class="btn primary" id="btn-resilience-once">Probar 1 llamada</button>
+          <button type="button" class="btn secondary" id="btn-resilience-stress">Stress ×5</button>
+          <button type="button" class="btn ghost dark" id="btn-resilience-clear">Limpiar</button>
+        </div>
+        <div class="resilience-actions form-inline" style="margin-top:0.55rem">
+          <button type="button" class="btn ghost dark" id="btn-espacios-stop">Detener ms-espacios</button>
+          <button type="button" class="btn secondary" id="btn-espacios-start">Iniciar ms-espacios</button>
+          <button type="button" class="btn ghost dark" id="btn-espacios-status">Estado ms-espacios</button>
+          <span id="espacios-demo-status" class="session-pill">—</span>
+        </div>
+        <p class="hint" style="margin-top:0">
+          Flujo sugerido: <strong>Detener</strong> → Probar 1 llamada (fallback) → <strong>Iniciar</strong> → Probar de nuevo (OK).
+        </p>
+        <div id="resilience-stats" class="ocupacion resilience-stats"></div>
+        <div id="resilience-status" class="ia-card resilience-status">
+          <p>Pulsa <strong>Probar 1 llamada</strong> para ver Circuit Breaker + Retry en acción.</p>
+        </div>
+        <h3 class="resilience-subtitle">Respuesta JSON</h3>
+        <pre id="resilience-out" class="code-box">—</pre>
+        <h3 class="resilience-subtitle">Historial de pruebas</h3>
+        <div id="resilience-log" class="list"></div>
+      </div>
+
+      <div id="tab-usuarios" class="panel" hidden>
+        <div class="panel-head">
+          <h2>Usuarios</h2>
+          <button type="button" class="btn secondary" id="btn-refresh-usuarios">Actualizar</button>
+        </div>
+        <p class="hint" style="margin-top:0">Mantenimiento via Keycloak (ms-auth). Solo ADMIN.</p>
+        <form id="form-usuario-crear" class="form-inline">
+          <input name="username" placeholder="Usuario" minlength="4" required />
+          <input name="email" type="email" placeholder="Email" required />
+          <input name="firstName" placeholder="Nombre" required />
+          <input name="lastName" placeholder="Apellido" required />
+          <input name="password" type="password" placeholder="Contraseña" minlength="6" required />
+          <select name="role" required>
+            <option value="CLIENTE">CLIENTE</option>
+            <option value="OPERADOR">OPERADOR</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+          <button type="submit" class="btn primary">Crear</button>
+        </form>
+        <div class="table-wrap">
+          <table class="reporte-table" id="usuarios-table">
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="usuarios-tbody">
+              <tr><td colspan="6" class="empty-row">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="tab-perfil" class="panel" hidden>
+        <div class="panel-head">
+          <h2>Mi perfil</h2>
+          <button type="button" class="btn secondary" id="btn-refresh-perfil">Recargar</button>
+        </div>
+        <div class="perfil-grid">
+          <form id="form-perfil" class="stack perfil-form">
+            <h3>Datos personales</h3>
+            <p id="perfil-username" class="hint" style="margin:0"></p>
+            <label>Nombre
+              <input name="firstName" id="perfil-firstName" required />
+            </label>
+            <label>Apellido
+              <input name="lastName" id="perfil-lastName" required />
+            </label>
+            <label>Email
+              <input name="email" id="perfil-email" type="email" required />
+            </label>
+            <button type="submit" class="btn primary">Guardar perfil</button>
+          </form>
+          <form id="form-perfil-password" class="stack perfil-form">
+            <h3>Cambiar contraseña</h3>
+            <label>Contraseña actual
+              <input name="currentPassword" type="password" required autocomplete="current-password" />
+            </label>
+            <label>Nueva contraseña
+              <input name="newPassword" type="password" minlength="6" required autocomplete="new-password" />
+            </label>
+            <button type="submit" class="btn primary">Cambiar contraseña</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="tab-token" class="panel" hidden>
+        <div class="panel-head">
+          <h2>Sesión y JWT</h2>
+        </div>
+        <div id="token-meta" class="token-meta"></div>
+        <pre id="token-raw" class="code-box"></pre>
+      </div>
+    </main>
+  </section>
+
+  <script src="js/app.js?v=47"></script>
+</body>
+</html>
