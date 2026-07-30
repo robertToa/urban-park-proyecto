@@ -1,0 +1,17 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: ms-auth
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI:http://localhost:8080/realms/urbanpark/protocol/openid-connect/certs}
+
+keycloak:
+  server-url: ${KEYCLOAK_SERVER_URL:http://localhost:8080}
+  realm: ${KEYCLOAK_REALM:urbanpark}
+  admin-client-id: ${KEYCLOAK_ADMIN_CLIENT_ID:urbanpark-backend}
+  admin-client-secret: ${KEYCLOAK_ADMIN_CLIENT_SECRET:urbanpark-secret}
