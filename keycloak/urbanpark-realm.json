@@ -1,0 +1,119 @@
+{
+  "realm": "urbanpark",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": true,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "roles": {
+    "realm": [
+      { "name": "CLIENTE", "description": "Conductor / cliente del estacionamiento" },
+      { "name": "OPERADOR", "description": "Operador de plaza" },
+      { "name": "ADMIN", "description": "Administrador del sistema" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "urbanpark-web",
+      "name": "Urban Park Web",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "fullScopeAllowed": true,
+      "redirectUris": ["http://localhost/*", "http://localhost:80/*", "*"],
+      "webOrigins": ["*"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "protocol": "openid-connect",
+      "defaultClientScopes": ["web-origins", "acr", "roles", "profile", "email"],
+      "optionalClientScopes": ["address", "phone", "offline_access", "microprofile-jwt"]
+    },
+    {
+      "clientId": "urbanpark-backend",
+      "name": "Urban Park Backend",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "urbanpark-secret",
+      "serviceAccountsEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "protocol": "openid-connect",
+      "fullScopeAllowed": true
+    }
+  ],
+  "users": [
+    {
+      "username": "service-account-urbanpark-backend",
+      "enabled": true,
+      "serviceAccountClientId": "urbanpark-backend",
+      "clientRoles": {
+        "realm-management": [
+          "manage-users",
+          "view-users",
+          "query-users",
+          "view-realm"
+        ]
+      }
+    },
+    {
+      "username": "cliente1",
+      "enabled": true,
+      "email": "cliente1@urbanpark.local",
+      "firstName": "Ana",
+      "lastName": "Cliente",
+      "credentials": [
+        { "type": "password", "value": "cliente123", "temporary": false }
+      ],
+      "realmRoles": ["CLIENTE"]
+    },
+    {
+      "username": "cliente2",
+      "enabled": true,
+      "email": "cliente2@urbanpark.local",
+      "firstName": "Pedro",
+      "lastName": "Cliente",
+      "credentials": [
+        { "type": "password", "value": "cliente123", "temporary": false }
+      ],
+      "realmRoles": ["CLIENTE"]
+    },
+    {
+      "username": "cliente3",
+      "enabled": true,
+      "email": "cliente3@urbanpark.local",
+      "firstName": "María",
+      "lastName": "Cliente",
+      "credentials": [
+        { "type": "password", "value": "cliente123", "temporary": false }
+      ],
+      "realmRoles": ["CLIENTE"]
+    },
+    {
+      "username": "operador1",
+      "enabled": true,
+      "email": "operador1@urbanpark.local",
+      "firstName": "Luis",
+      "lastName": "Operador",
+      "credentials": [
+        { "type": "password", "value": "operador123", "temporary": false }
+      ],
+      "realmRoles": ["OPERADOR"]
+    },
+    {
+      "username": "admin1",
+      "enabled": true,
+      "email": "admin1@urbanpark.local",
+      "firstName": "Admin",
+      "lastName": "Urban",
+      "credentials": [
+        { "type": "password", "value": "admin123", "temporary": false }
+      ],
+      "realmRoles": ["ADMIN", "OPERADOR"]
+    }
+  ]
+}
