@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ms-espacios
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/db_espacios}
+    username: ${SPRING_DATASOURCE_USERNAME:urban}
+    password: ${SPRING_DATASOURCE_PASSWORD:urban123}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Solo JWKS: evita fallos por issuer (localhost vs localhost:80 vs :8080)
+          jwk-set-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI:http://localhost:8080/realms/urbanpark/protocol/openid-connect/certs}
+
+logging:
+  level:
+    org.springframework.security: INFO
